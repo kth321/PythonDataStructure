@@ -7,7 +7,7 @@ class Linked_List(object):
     def __init__(self):
         self.head = None
         self.length = 0
-    
+
     def isempty(self):
         return not bool(self.head)
 
@@ -51,12 +51,14 @@ class Linked_List(object):
                 self.length += 1
         else:
             print('list is empty')
-    
+
     def remove(self, target):
         if not self.isempty():
             node = self.head
             if node.value == target:
                 self.head = node.pointer
+                self.length -=1
+                return True
             else:
                 prev = node
                 node = node.pointer
@@ -86,7 +88,7 @@ class Linked_List(object):
         else:
             print('list is empty')
             return False
-    
+
     def search_pos(self, pos):
         if not self.isempty():
             cnt = 0
@@ -100,10 +102,10 @@ class Linked_List(object):
         else:
             print('list is empty')
             return False
-    
+
     def size(self):
         return self.length
-    
+
     def print(self):
         if not self.isempty():
             node = self.head
