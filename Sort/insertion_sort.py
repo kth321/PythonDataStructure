@@ -9,4 +9,4 @@ def insertion_sort(seq):
 
 if __name__ == '__main__':
     seq = [4, 5, 2, 1, 6, 2, 7, 10, 13, 8]
-    print(bubble_sort(seq))    
+    print(insertion_sort(seq))    
