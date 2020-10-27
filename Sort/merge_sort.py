@@ -16,4 +16,8 @@ def merge_sort(seq):
         else:
             result.append(right.pop())
     result.reverse()
-    return left or right + result
+    return (left or right) + result
+
+if __name__ == '__main__':
+    seq = [3,5,2,6,8,1,0,3,5,6,2]
+    print(merge_sort(seq))
