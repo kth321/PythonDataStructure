@@ -4,7 +4,6 @@ def merge_sort(seq):
     mid = len(seq) // 2
     left = merge_sort(seq[:mid])
     right = merge_sort(seq[mid:])
-    print(left, right)
     return merge(left, right)
 
 def merge(left, right):
@@ -19,7 +18,6 @@ def merge(left, right):
         else:
             result.append(right[j])
             j += 1
-#        print(result)
     if left[i:]:
         result.extend(left[i:])
     if right[j:]:
