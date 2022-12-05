@@ -1,36 +1,36 @@
+from typing import Union, TypeVar
+
+T = TypeVar('T', bound=Union[int, float])
+
 class Node(object):
-    def __init__(self, value=None, pointer=None):
+    def __init__(self, value: T=None, next=None):
         self.value = value
-        self.pointer = pointer
+        self.next = next
 
 class Stack(object):
     def __init__(self):
         self.head = None
         self.length = 0
 
-    def isempty(self):
+    def isempty(self) -> bool:
         return not bool(self.head)
     
-    def push(self, item):
+    def push(self, item:T) -> None:
         self.head = Node(item, self.head)
         self.length += 1
     
-    def pop(self):
-        if self.head:
+    def pop(self) -> T:
+        if not self.isempty():
             value = self.head.value
             self.head = self.head.pointer
             self.length -= 1
             return value
-        else:
-            print('stack is empty')
-            return False
+        raise IndexError('Sequence index out of range.')
     
-    def peek(self):
-        if self.head:
+    def peek(self) -> T:
+        if not self.isempty():
             return self.head.value
-        else:
-            print('stack is empty')
-            return False
+        raise IndexError('Sequence index out of range.')
 
     def size(self):
         return self.length
