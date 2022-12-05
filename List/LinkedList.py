@@ -50,7 +50,10 @@ class Linked_List(object):
                     cnt += 1
                 self.length += 1
         else:
-            print('list is empty')
+            if pos == 0 or pos == -1:
+                self.add_first(item)
+            else:
+                raise IndexError("Sequence index out of range")
 
     def remove(self, target):
         if not self.isempty():
