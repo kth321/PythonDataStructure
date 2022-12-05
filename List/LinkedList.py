@@ -1,17 +1,21 @@
+from typing import TypeVar
+
+T = TypeVar("T", bound=[int, float])
+
 class Node(object):
-    def __init__(self, value=None, pointer=None):
+    def __init__(self, value: int=None, pointer=None):
         self.value = value
         self.pointer = pointer
 
 class Linked_List(object):
     def __init__(self):
-        self.head = None
-        self.length = 0
+        self.head: Node = None
+        self.length: int = 0
 
-    def isempty(self):
+    def isempty(self) -> bool:
         return not bool(self.head)
 
-    def add_first(self, item):
+    def add_first(self, item: T) -> None:
         node = Node(item)
         if not self.isempty():
             node.pointer = self.head
@@ -20,7 +24,7 @@ class Linked_List(object):
             self.head = node
         self.length += 1
 
-    def add_last(self, item):
+    def add_last(self, item: T) -> None:
         if not self.isempty():
             node = self.head
             while node.pointer:
@@ -30,7 +34,7 @@ class Linked_List(object):
             self.head = Node(item)
         self.length += 1
 
-    def insert(self, pos, item):
+    def insert(self, pos: int, item: T) -> None:
         if not self.isempty():
             if pos == 0:
                 self.add_first(item)
@@ -55,7 +59,7 @@ class Linked_List(object):
             else:
                 raise IndexError("Sequence index out of range")
 
-    def remove(self, target):
+    def remove(self, target: T) -> bool:
         if not self.isempty():
             node = self.head
             if node.value == target:
@@ -75,10 +79,10 @@ class Linked_List(object):
                     node = node.pointer
                 return False
         else:
-            print('list is empty')
+            print('Sequence index out of range')
             return False
 
-    def search_target(self, target):
+    def search_target(self, target: T) -> bool:
         if not self.isempty():
             pos = 0
             node = self.head
@@ -89,10 +93,10 @@ class Linked_List(object):
                 pos += 1
             return False
         else:
-            print('list is empty')
+            print('Sequence index out of range')
             return False
 
-    def search_pos(self, pos):
+    def search_pos(self, pos: int) -> bool:
         if not self.isempty():
             cnt = 0
             node = self.head
@@ -103,13 +107,13 @@ class Linked_List(object):
                 cnt += 1
             return False
         else:
-            print('list is empty')
+            print('Sequence index out of range')
             return False
 
-    def size(self):
+    def size(self) -> int:
         return self.length
 
-    def print(self):
+    def print(self) -> None:
         if not self.isempty():
             node = self.head
             while node:
